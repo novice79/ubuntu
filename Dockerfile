@@ -23,6 +23,9 @@ RUN git clone https://github.com/SoftEtherVPN/SoftEtherVPN.git /usr/local/src/vp
     && rm -rf /usr/local/src/vpnserver
     
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-EXPOSE 22
+#1723/TCP(PPTP) 1701/UDP(L2TP) 
+#500/UDP(IPSec using IKE/IKEv2, e.g. used by L2TP) 
+#4500/UDP(IKE/IKEv2 and NAT-T)
+EXPOSE 22 500/udp 4500/udp 1701/tcp 443/tcp 992/tcp 5555/tcp
 
 CMD ["/usr/bin/supervisord"]
