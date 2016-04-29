@@ -2,8 +2,9 @@ FROM ubuntu:latest
 MAINTAINER david <david@cninone.com>
 
 RUN apt-get update && apt-get install -y software-properties-common python-software-properties openssh-server supervisor \
-    git build-essential vim emacs \
-    libreadline-dev libncurses5-dev libssl-dev
+    git build-essential vim \
+    libreadline-dev libncurses5-dev libssl-dev \
+    && rm -rf /var/lib/apt/lists/* 
 RUN mkdir /var/run/sshd
 RUN echo 'root:freego' | chpasswd
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
