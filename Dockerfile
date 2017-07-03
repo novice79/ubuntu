@@ -7,7 +7,7 @@ ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir /var/run/sshd
-RUN useradd -ms /bin/bash  david
+RUN useradd -ms /bin/bash david && usermod -aG sudo david
 RUN echo 'david:freego' | chpasswd
 RUN echo 'root:freego_2017' | chpasswd
 # RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
