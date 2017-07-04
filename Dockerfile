@@ -31,4 +31,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 EXPOSE 22 80
 
-CMD ["/usr/bin/supervisord"]
+#CMD ["/usr/bin/supervisord"]
+COPY init.sh /
+ENTRYPOINT ["/init.sh"]
