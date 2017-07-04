@@ -3,7 +3,7 @@ MAINTAINER david <david@cninone.com>
 
 RUN apt-get update && apt-get install -y software-properties-common python-software-properties \
     openssh-server supervisor nginx \
-    git build-essential vim curl sudo cron net-tools
+    git build-essential vim curl sudo cron net-tools iputils-ping
 ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN cd ~ \
