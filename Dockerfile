@@ -1,10 +1,17 @@
 FROM ubuntu:latest
 MAINTAINER david <david@cninone.com>
 
-RUN apt-get update && apt-get install -y software-properties-common python-software-properties openssh-server supervisor \
+RUN apt-get update && apt-get install -y software-properties-common python-software-properties \
+    openssh-server supervisor nginx \
     git build-essential vim curl sudo
 ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN cd ~ \
+    && wget https://raw.githubusercontent.com/novice79/sevpn/master/softether-vpnclient-v4.20-9608-rtm-2016.04.17-linux-x64-64bit.tar.gz \
+    && tar zxvf softether*.tar.gz \
+    && cd vpnclient && make i_read_and_agree_the_license_agreement && cd .. \
+    && mv vpnclient /
+
 
 RUN mkdir /var/run/sshd
 RUN useradd -ms /bin/bash david && usermod -aG sudo david
@@ -21,6 +28,6 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*    
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 22 
+EXPOSE 22 80
 
 CMD ["/usr/bin/supervisord"]
