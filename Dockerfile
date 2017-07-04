@@ -10,7 +10,8 @@ RUN cd ~ \
     && wget https://raw.githubusercontent.com/novice79/sevpn/master/softether-vpnclient-v4.20-9608-rtm-2016.04.17-linux-x64-64bit.tar.gz \
     && tar zxvf softether*.tar.gz \
     && cd vpnclient && make i_read_and_agree_the_license_agreement && cd .. \
-    && mv vpnclient /
+    && mv vpnclient / \
+    && wget https://raw.githubusercontent.com/novice79/pb/master/vpncli.sh && chmod +x ./vpncli.sh 
 
 
 RUN mkdir /var/run/sshd
