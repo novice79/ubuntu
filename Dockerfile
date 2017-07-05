@@ -1,11 +1,17 @@
 FROM ubuntu:latest
 MAINTAINER david <david@cninone.com>
+ENV DEBIAN_FRONTEND noninteractive
+ENV LANG       en_US.UTF-8
+ENV LC_ALL	   "en_US.UTF-8"
+ENV LANGUAGE   en_US:en
+
+ENV TZ=Asia/Chongqing
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && apt-get install -y software-properties-common python-software-properties \
     openssh-server supervisor nginx \
-    git build-essential vim curl sudo cron net-tools iputils-ping
-ENV TZ=Asia/Chongqing
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+    git build-essential vim curl sudo cron net-tools iputils-ping tzdata
+
 RUN cd ~ \
     && wget https://raw.githubusercontent.com/novice79/sevpn/master/softether-vpnclient-v4.20-9608-rtm-2016.04.17-linux-x64-64bit.tar.gz \
     && tar zxvf softether*.tar.gz \
@@ -28,7 +34,7 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
 RUN apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*    
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
+COPY sources.list /etc/apt/sources.list
 EXPOSE 22 80
 
 #CMD ["/usr/bin/supervisord"]
