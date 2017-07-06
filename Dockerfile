@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y software-properties-common python-softw
     git build-essential vim curl sudo cron net-tools iputils-ping tzdata
 
 RUN cd ~ \
-    && wget https://raw.githubusercontent.com/novice79/sevpn/master/softether-vpnclient-v4.20-9608-rtm-2016.04.17-linux-x64-64bit.tar.gz \
+    && wget https://raw.githubusercontent.com/novice79/pb/master/softether-vpnclient-v4.20-9608-rtm-2016.04.17-linux-x64-64bit.tar.gz \
     && tar zxvf softether*.tar.gz \
     && cd vpnclient && make i_read_and_agree_the_license_agreement && cd .. \
     && mv vpnclient / \
