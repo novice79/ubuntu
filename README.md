@@ -1,3 +1,3 @@
 # ubuntu
-ubuntu16.04 with sshd nodejs
+ubuntu18.04 with some utils
 
