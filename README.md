@@ -10,7 +10,13 @@ docker push -a novice/ubuntu
 
 # Usage: start service env (and then ssh login to it)
 
-docker run -d --name ub22 -p 2222:22 -h ub22 novice/ubuntu
+docker run -d \
+--restart=always \
+--name ub22 \
+-p 2222:22 \
+-h ub22 \
+-v ssh:/home/novice/.ssh \
+novice/ubuntu
 
 ssh account:  
 username: novice  
