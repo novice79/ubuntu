@@ -36,4 +36,4 @@ WORKDIR /data
 ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
 
 # for test use:
-# docker run -it --rm --name td -p 2222:22 -h ub22 --entrypoint bash ubdev
+# docker run -it --rm --name ub22 -p 2222:22 -h ub22 --entrypoint bash novice/ubuntu
