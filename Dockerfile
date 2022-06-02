@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
 LABEL maintainer="Novice <novice@piaoyun.shop>"
 ENV DEBIAN_FRONTEND noninteractive
@@ -6,7 +6,7 @@ ENV LANG       en_US.UTF-8
 ENV LC_ALL	   "C.UTF-8"
 ENV LANGUAGE   en_US:en
 
-# COPY sources.list/al22.04.list /etc/apt/sources.list
+# COPY sources.list/al20.04.list /etc/apt/sources.list
 RUN apt-get update \
     && apt-get install -y \
     vim curl sudo cron net-tools iputils-ping tzdata \
@@ -36,4 +36,4 @@ WORKDIR /data
 ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
 
 # for test use:
-# docker run -it --rm --name td -p 2222:22 -h ub22 --entrypoint bash ubdev
+# docker run -it --rm --name ub20 -p 2222:22 -h ub20 --entrypoint bash novice/ubuntu:20.04
