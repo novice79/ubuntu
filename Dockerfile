@@ -9,7 +9,8 @@ ENV LANGUAGE   en_US:en
 # COPY sources.list/al20.04.list /etc/apt/sources.list
 RUN apt-get update \
     && apt-get install -y \
-    vim curl sudo cron net-tools iputils-ping tzdata \
+    vim curl sudo cron screen \
+    net-tools iputils-ping tzdata \
     openssh-server
 # set TZ after tzdate installed
 ENV TZ=Asia/Chongqing
