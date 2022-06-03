@@ -9,4 +9,5 @@ docker run -d \
 -p 2222:22 \
 -h ub20 \
 -v ssh:/home/novice/.ssh \
+-v /data:/data \
 novice/ubuntu:20.04
