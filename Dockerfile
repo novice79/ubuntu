@@ -35,7 +35,10 @@ EXPOSE 22
 
 USER 1000
 WORKDIR /data
-ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
+# ENTRYPOINT ["sudo", "/usr/sbin/sshd", "-D"]
+
+COPY init.sh /
+ENTRYPOINT ["/init.sh"]
 
 # for test use:
 # docker run -it --rm --name ub22 -p 2222:22 -h ub22 --entrypoint bash novice/ubuntu
