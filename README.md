@@ -16,6 +16,7 @@ docker run -d \
 -p 2222:22 \
 -h ub22 \
 -v ssh:/home/novice/.ssh \
+-v /data:/data \
 novice/ubuntu
 
 ssh account:  
