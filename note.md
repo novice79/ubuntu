@@ -8,7 +8,7 @@ docker run -d \
 --restart=always \
 --name ub20 \
 -e ip=192.168.2.1 \
--e mask=192.168.0.0 \
+-e mask=255.255.0.0 \
 -e gw=192.168.0.1 \
 -h ub20 \
 -v ssh:/home/novice/.ssh \
