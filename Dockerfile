@@ -12,7 +12,7 @@ RUN apt-get update \
     software-properties-common \
     vim curl sudo cron screen \
     net-tools iputils-ping tzdata \
-    openssh-server
+    openssh-server iproute2
 # set TZ after tzdate installed
 ENV TZ=Asia/Chongqing
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
